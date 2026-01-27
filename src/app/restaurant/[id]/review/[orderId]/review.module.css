@@ -1,0 +1,153 @@
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: var(--text-secondary);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.ratingGroup {
+    text-align: center;
+}
+
+.ratingLabel {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.star {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.star:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.star.active {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.commentGroup {
+    text-align: left;
+}
+
+.textarea {
+    resize: none;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+}
+
+.submitBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.skipLink {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.skipLink:hover {
+    color: var(--text-secondary);
+}
+
+/* Success State */
+.successContainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.successCard {
+    text-align: center;
+    background: var(--background-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 48px 32px;
+    max-width: 400px;
+    width: 100%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.successIcon {
+    font-size: 4rem;
+    margin-bottom: 24px;
+}
+
+.successCard h2 {
+    margin-bottom: 12px;
+}
+
+.successCard p {
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

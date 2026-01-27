@@ -1,0 +1,50 @@
+.reviewsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.reviewCard {
+    background: var(--background-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.ratings {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 16px;
+}
+
+.ratingItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ratingLabel {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stars {
+    font-size: 1.25rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+}
+
+.comment {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}

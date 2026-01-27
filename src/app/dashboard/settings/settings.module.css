@@ -1,0 +1,133 @@
+.grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 32px;
+}
+
+/* QR Code Section */
+.qrSection {
+    background: var(--background-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    text-align: center;
+    height: fit-content;
+}
+
+.qrSection h2 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.qrSection>p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.qrCode {
+    background: var(--background-elevated);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.qrCode img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+.menuLink {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.menuLink input {
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* Form */
+.form {
+    background: var(--background-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.message {
+    padding: 12px 16px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--success);
+    margin-bottom: 24px;
+}
+
+.message.error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: var(--error);
+}
+
+.section {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.section:last-of-type {
+    margin-bottom: 24px;
+}
+
+.section h3 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.formGroup {
+    margin-bottom: 16px;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.checkbox input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary);
+}
+
+.checkbox span {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qrSection {
+        order: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .formRow {
+        grid-template-columns: 1fr;
+    }
+}

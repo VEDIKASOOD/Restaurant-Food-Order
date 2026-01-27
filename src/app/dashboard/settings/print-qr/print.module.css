@@ -1,0 +1,97 @@
+.container {
+    padding: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.preview {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Print Styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .preview,
+    .preview * {
+        visibility: visible;
+    }
+
+    .preview {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .no-print {
+        display: none;
+    }
+}
+
+.cardContent {
+    border: 2px solid #ccc;
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.restaurantName {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.cta {
+    font-size: 24px;
+    color: #666;
+    margin: 0;
+}
+
+.qrImage {
+    margin: 24px 0;
+}
+
+.qrImage img {
+    border-radius: 8px;
+}
+
+.footer {
+    font-size: 16px;
+    color: #888;
+    margin-top: 24px;
+}
+
+.tableNumber {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: var(--background-light);
+    padding: 8px 24px;
+    border-radius: 20px;
+    margin-top: 16px;
+}

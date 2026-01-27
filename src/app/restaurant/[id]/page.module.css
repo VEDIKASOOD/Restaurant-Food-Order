@@ -1,0 +1,247 @@
+.container {
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.loadingContainer,
+.errorContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+    padding: 24px;
+}
+
+.errorIcon {
+    font-size: 48px;
+}
+
+.header {
+    background: white;
+    padding: 24px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: -24px;
+}
+
+.headerContent {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header h1 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+}
+
+.address {
+    color: var(--text-secondary);
+    margin: 0 0 4px 0;
+    font-size: 14px;
+}
+
+.hours {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 14px;
+    margin: 0 0 12px 0;
+}
+
+.description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Search Bar */
+.searchContainer {
+    padding: 0 24px;
+    max-width: 800px;
+    margin: -24px auto 24px;
+    position: relative;
+    z-index: 3;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    background: white;
+}
+
+.categoryNav {
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    z-index: 10;
+    padding: 16px 24px;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border-color);
+    -webkit-overflow-scrolling: touch;
+}
+
+.categoryTabs {
+    display: flex;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.categoryTab {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: white;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.categoryTab.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.menuGrid {
+    padding: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 24px;
+}
+
+.menuItem {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.itemImage {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.itemImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.itemContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.itemHeader h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.price {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.itemDescription {
+    margin: 0 0 16px 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.addButton {
+    margin-top: auto;
+    width: fit-content;
+    padding: 8px 16px;
+    font-size: 13px;
+    align-self: flex-end;
+}
+
+.floatingCart {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--primary-color);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.4);
+    text-decoration: none;
+    z-index: 100;
+    animation: slideUp 0.3s ease-out;
+}
+
+.cartInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.cartCount {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.cartTotal {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.cartAction {
+    font-weight: 600;
+}
+
+.noResults {
+    text-align: center;
+    padding: 48px;
+    color: var(--text-secondary);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

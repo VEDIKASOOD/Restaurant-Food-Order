@@ -1,0 +1,270 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.backLink {
+    display: inline-block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    transition: color 0.2s ease;
+}
+
+.backLink:hover {
+    color: var(--primary);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+}
+
+/* Empty Cart */
+.emptyCart {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.emptyIcon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+
+.emptyCart h2 {
+    margin-bottom: 8px;
+}
+
+.emptyCart p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* Cart Items */
+.cartItems {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--background-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.itemInfo {
+    flex: 1;
+}
+
+.itemInfo h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.itemPrice {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--background-elevated);
+    border-radius: var(--radius-full);
+    padding: 4px;
+}
+
+.quantityBtn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.quantityBtn:hover {
+    background: var(--primary);
+}
+
+.quantity {
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+}
+
+.itemTotal {
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 80px;
+    text-align: right;
+}
+
+.removeBtn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.removeBtn:hover {
+    color: var(--error);
+}
+
+/* Order Details */
+.orderDetails {
+    margin-bottom: 24px;
+}
+
+.formGroup {
+    margin-bottom: 16px;
+}
+
+.textarea {
+    resize: none;
+}
+
+/* Summary */
+.summary {
+    background: var(--background-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: var(--text-secondary);
+}
+
+.summaryRow.total {
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+    padding-top: 16px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.placeOrderBtn {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.1rem;
+}
+
+/* Success State */
+.successContainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.successCard {
+    text-align: center;
+    background: var(--background-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 48px 32px;
+    max-width: 400px;
+    width: 100%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.successIcon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    font-size: 2.5rem;
+    color: white;
+    margin: 0 auto 24px;
+}
+
+.successCard h2 {
+    margin-bottom: 12px;
+}
+
+.successCard p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.orderNumber {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--background-elevated);
+    border-radius: var(--radius-md);
+    font-family: monospace;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 32px;
+}
+
+.successActions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .cartItem {
+        flex-wrap: wrap;
+    }
+
+    .itemInfo {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .successActions {
+        flex-direction: column;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
