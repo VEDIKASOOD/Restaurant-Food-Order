@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QR Food Order 🍽️
 
-## Getting Started
+A modern, QR-based contactless food ordering system covering the entire restaurant-customer flow. Built with **Next.js**, **MongoDB**, and **NextAuth.js**.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### For Restaurants (Admin)
+-   **Dashboard**: Real-time overview of orders, revenue, and pending actions.
+-   **Menu Management**: Add, edit, delete, and toggle availability of items with images.
+-   **QR Code Generator**: Automatic unique QR code generation for tables.
+-   **Order Management**: Track orders through `Pending -> Confirmed -> Preparing -> Ready -> Completed`.
+-   **Settings**: Manage restaurant profile, operating hours, and discount configurations.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### For Customers (Public)
+-   **Mobile-First Menu**: Clean, responsive interface to browse categories and items.
+-   **Cart System**: Add items, manage quantities, and review order totals.
+-   **Checkout**: Table number input, special instructions, and discount code support.
+-   **Review System**: Leave 5-star ratings and earn automatic discount codes for next visit.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
+-   **Framework**: Next.js 15+ (App Router)
+-   **Database**: MongoDB (via Mongoose)
+-   **Auth**: NextAuth.js (Credentials Provider)
+-   **Styling**: CSS Modules (Scoped & Responsive)
+-   **Utilities**: `bcryptjs` (Security), `qrcode` (Generation)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Getting Started
 
-## Learn More
+### Prerequisites
+-   Node.js 18+
+-   MongoDB Instance (Local or Atlas)
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/qr-food-order.git
+    cd qr-food-order
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-## Deploy on Vercel
+3.  **Environment Setup**:
+    Create a `.env.local` file in the root directory:
+    ```env
+    # Database
+    MONGODB_URI=mongodb://localhost:27017/qr-food-order
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    # Auth
+    NEXTAUTH_SECRET=your-super-secret-key-change-in-production
+    NEXTAUTH_URL=http://localhost:3000
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    # Application
+    NEXT_PUBLIC_APP_URL=http://localhost:3000
+    ```
+
+4.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000)
+
+## 🚢 Deployment
+
+The application is production-ready.
+
+1.  **Build**:
+    ```bash
+    npm run build
+    ```
+
+2.  **Start**:
+    ```bash
+    npm start
+    ```
+
+### Recommended Hosting
+-   **Vercel** (Zero config for Next.js)
+-   **Railway** / **Render** (For Node.js + MongoDB)
+
+## 🧪 Verification
+Refer to `walkthrough.md` in the artifacts folder for a detailed manual verification checklist.
