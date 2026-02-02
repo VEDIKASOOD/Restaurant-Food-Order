@@ -46,22 +46,7 @@ export default function SettingsPage() {
         minOrderAmount: 0,
     });
 
-    useEffect(() => {
-        if (session?.user?.id) {
-            fetchRestaurant();
-        }
-    }, [session]);
-
-    useEffect(() => {
-        if (session?.user?.id) {
-            const baseUrl = `${window.location.origin}/restaurant/${session?.user?.id}`;
-            const url = tableNumber ? `${baseUrl}?table=${tableNumber}` : baseUrl;
-            setQrUrl(url);
-            generateQRCode(url);
-        }
-    }, [session, tableNumber]);
-
-    const fetchRestaurant = async () => {
+    const fetchRestaurant = useCallback(async () => {
         try {
             const res = await fetch(`/api/restaurants/${session?.user?.id}`);
             const data = await res.json();
@@ -83,9 +68,9 @@ export default function SettingsPage() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [session?.user?.id]);
 
-    const generateQRCode = async (url: string) => {
+    const generateQRCode = useCallback(async (url: string) => {
         try {
             const qrDataUrl = await QRCode.toDataURL(url, {
                 width: 300,
@@ -99,7 +84,22 @@ export default function SettingsPage() {
         } catch (error) {
             console.error('Failed to generate QR code:', error);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        if (session?.user?.id) {
+            fetchRestaurant();
+        }
+    }, [session, fetchRestaurant]);
+
+    useEffect(() => {
+        if (session?.user?.id) {
+            const baseUrl = `${window.location.origin}/restaurant/${session?.user?.id}`;
+            const url = tableNumber ? `${baseUrl}?table=${tableNumber}` : baseUrl;
+            setQrUrl(url);
+            generateQRCode(url);
+        }
+    }, [session, tableNumber, generateQRCode]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
