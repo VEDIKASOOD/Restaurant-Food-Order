@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import * as QRCode from 'qrcode';
 import styles from '../dashboard.module.css';
 import settingsStyles from './settings.module.css';
