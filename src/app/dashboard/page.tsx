@@ -28,34 +28,34 @@ export default function DashboardPage() {
     }>>([]);
 
     useEffect(() => {
+        const fetchDashboardData = async () => {
+            try {
+                // Fetch orders
+                const ordersRes = await fetch(`/api/orders?restaurantId=${session?.user?.id}`);
+                const ordersData = await ordersRes.json();
+
+                // Fetch reviews
+                const reviewsRes = await fetch(`/api/reviews?restaurantId=${session?.user?.id}`);
+                const reviewsData = await reviewsRes.json();
+
+                const orders = ordersData.orders || [];
+                setRecentOrders(orders.slice(0, 5));
+
+                setStats({
+                    totalOrders: orders.length,
+                    pendingOrders: orders.filter((o: { status: string }) => o.status === 'pending').length,
+                    totalRevenue: orders.reduce((sum: number, o: { totalPrice: number }) => sum + o.totalPrice, 0),
+                    avgRating: reviewsData.stats?.avgRestaurantRating || 0,
+                });
+            } catch (error) {
+                console.error('Failed to fetch dashboard data:', error);
+            }
+        };
+
         if (session?.user?.id) {
             fetchDashboardData();
         }
     }, [session]);
-
-    const fetchDashboardData = async () => {
-        try {
-            // Fetch orders
-            const ordersRes = await fetch(`/api/orders?restaurantId=${session?.user?.id}`);
-            const ordersData = await ordersRes.json();
-
-            // Fetch reviews
-            const reviewsRes = await fetch(`/api/reviews?restaurantId=${session?.user?.id}`);
-            const reviewsData = await reviewsRes.json();
-
-            const orders = ordersData.orders || [];
-            setRecentOrders(orders.slice(0, 5));
-
-            setStats({
-                totalOrders: orders.length,
-                pendingOrders: orders.filter((o: { status: string }) => o.status === 'pending').length,
-                totalRevenue: orders.reduce((sum: number, o: { totalPrice: number }) => sum + o.totalPrice, 0),
-                avgRating: reviewsData.stats?.avgRestaurantRating || 0,
-            });
-        } catch (error) {
-            console.error('Failed to fetch dashboard data:', error);
-        }
-    };
 
     const getStatusBadge = (status: string) => {
         const statusMap: Record<string, string> = {

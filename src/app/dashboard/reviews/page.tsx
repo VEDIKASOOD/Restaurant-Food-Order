@@ -30,23 +30,23 @@ export default function ReviewsPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const res = await fetch(`/api/reviews?restaurantId=${session?.user?.id}`);
+                const data = await res.json();
+                setReviews(data.reviews || []);
+                setStats(data.stats || { totalReviews: 0, avgFoodRating: 0, avgRestaurantRating: 0 });
+            } catch (error) {
+                console.error('Failed to fetch reviews:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         if (session?.user?.id) {
             fetchReviews();
         }
     }, [session]);
-
-    const fetchReviews = async () => {
-        try {
-            const res = await fetch(`/api/reviews?restaurantId=${session?.user?.id}`);
-            const data = await res.json();
-            setReviews(data.reviews || []);
-            setStats(data.stats || { totalReviews: 0, avgFoodRating: 0, avgRestaurantRating: 0 });
-        } catch (error) {
-            console.error('Failed to fetch reviews:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const renderStars = (rating: number) => {
         return '★'.repeat(rating) + '☆'.repeat(5 - rating);

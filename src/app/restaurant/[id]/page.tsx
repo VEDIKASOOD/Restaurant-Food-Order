@@ -94,6 +94,39 @@ export default function RestaurantMenuPage({
         });
     };
 
+    // Generate placeholder image based on category
+    const getPlaceholderImage = (category: string): string => {
+        const placeholders: { [key: string]: string } = {
+            pizza: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=400&fit=crop',
+            burger: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop',
+            pasta: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=400&fit=crop',
+            drinks: 'https://images.unsplash.com/photo-1437418747212-8d9709afab22?w=400&h=400&fit=crop',
+            dessert: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=400&fit=crop',
+            salad: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
+            appetizer: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=400&h=400&fit=crop',
+            curry: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=400&fit=crop',
+            rice: 'https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?w=400&h=400&fit=crop',
+            noodles: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400&h=400&fit=crop',
+            sandwich: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&h=400&fit=crop',
+            soup: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=400&fit=crop',
+            chicken: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=400&fit=crop',
+            seafood: 'https://images.unsplash.com/photo-1559737558-2f5a70b8e25f?w=400&h=400&fit=crop',
+            biryani: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&h=400&fit=crop',
+            default: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop',
+        };
+
+        const categoryLower = category.toLowerCase();
+
+        // Check for exact match or partial match
+        for (const key in placeholders) {
+            if (categoryLower.includes(key) || key.includes(categoryLower)) {
+                return placeholders[key];
+            }
+        }
+
+        return placeholders.default;
+    };
+
     if (loading) {
         return (
             <div className={styles.loadingContainer}>
@@ -170,11 +203,17 @@ export default function RestaurantMenuPage({
                         .find((cat) => cat.category === activeCategory)
                         ?.items.map((item) => (
                             <div key={item._id} className={styles.menuItem}>
-                                {item.image && (
-                                    <div className={styles.itemImage}>
-                                        <img src={item.image} alt={item.name} />
-                                    </div>
-                                )}
+                                <div className={styles.itemImage}>
+                                    <img
+                                        src={item.image || getPlaceholderImage(item.category)}
+                                        alt={item.name}
+                                        onError={(e) => {
+                                            // Fallback to default placeholder if image fails to load
+                                            const target = e.target as HTMLImageElement;
+                                            target.src = getPlaceholderImage(item.category);
+                                        }}
+                                    />
+                                </div>
                                 <div className={styles.itemContent}>
                                     <div className={styles.itemHeader}>
                                         <h3>{item.name}</h3>

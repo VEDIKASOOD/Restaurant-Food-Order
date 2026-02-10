@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, use } from 'react';
+import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/contexts/CartContext';
 import styles from './cart.module.css';
@@ -20,14 +20,13 @@ export default function CartPage({
     const [orderId, setOrderId] = useState<string | null>(null);
 
     // Initialize table number from URL params safely
-    use(new Promise(resolve => {
+    useEffect(() => {
         if (typeof window !== 'undefined') {
             const params = new URLSearchParams(window.location.search);
             const table = params.get('table');
             if (table) setTableNumber(table);
         }
-        resolve(null);
-    }));
+    }, []);
 
     const handlePlaceOrder = async () => {
         if (items.length === 0) return;
